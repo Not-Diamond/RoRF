@@ -43,7 +43,7 @@ We also provide a `threshold` parameter that determines the percentage of calls 
 The `threshold` parameter controls the percentage of calls made to each model but depending on the types of query you might receive, you should calibrate it with your own data. As an example, we can use the dataset [`notdiamond/rorf-llama31405b-llama3170b-battles`](https://huggingface.co/datasets/notdiamond/rorf-llama31405b-llama3170b-battles) to calibrate the threshold for sending 50% of the calls to `llama-3.1-405b-instruct`.
 
 ``` shell
-python -m rorf.calibrate_threshold --calibration-dataset "notdiamond/rorf-llama31405b-llama3170b-battles" --router "notdiamond/rorf-jina-llama31405b-llama3170b" --strong-model-pct 0.5 --task generate
+python -m rorf.calibrate_threshold --calibration-dataset "notdiamond/rorf-llama31405b-llama3170b-battles" --router "notdiamond/rorf-jina-llama31405b-llama3170b" --model-a-pct 0.5 --task generate
 ```
 
 ## Pre-trained routers
