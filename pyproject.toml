@@ -1,13 +1,28 @@
 [tool.poetry]
 name = "rorf"
-version = "0.1.0"
+version = "0.1.2"
 description = ""
 authors = ["Tze-Yang Tung <r0ymanesco@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
-
+python = ">=3.10,<3.12"
+transformers = "^4.44.2"
+torch = "^2.4.1"
+huggingface-hub = "^0.25.1"
+wandb = "^0.16.4"
+voyageai = "^0.2.3"
+openai = "^1.47.1"
+einops = "^0.8.0"
+datasets = "^3.0.0"
+numpy = "^2.1.1"
+pandas = "^2.2.3"
+click = "^8.1.7"
+scikit-learn = "^1.5.2"
+python-dotenv = "^1.0.1"
+tiktoken = "^0.7.0"
+accelerate = "^0.34.2"
+matplotlib = "^3.9.2"
 
 [build-system]
 requires = ["poetry-core"]
