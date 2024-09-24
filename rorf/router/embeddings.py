@@ -30,7 +30,7 @@ class VoyageEmbeddings(BaseEmbeddings):
         """
         Initialize a Voyage AI client.
         """
-        VOYAGE_API_KEY=os.getenv("VOYAGE_API_KEY")
+        VOYAGE_API_KEY = os.getenv("VOYAGE_API_KEY")
         self.embedding_model = voyageai.Client(api_key=VOYAGE_API_KEY)
         self.model_name = model_name
     

@@ -21,7 +21,8 @@ def run(ctx):
 
 
 @run.command()
-@click.option("--llms", multiple=True, default=['llama-3.1-405b-instruct', 'llama-3.1-70b-instruct'])
+@click.option("--model_a", type=str, default="llama-3.1-405b-instruct")
+@click.option("--model_b", type=str, default="llama-3.1-70b-instruct")
 @click.option("--dataset_path", type=str)
 @click.option("--eval_dataset", type=str)
 @click.option("--embedding_provider", type=str, default="jina")
@@ -36,7 +37,8 @@ def run(ctx):
 @click.pass_context
 def rorf_classifier(
     ctx,
-    llms: List[str],
+    model_a: str,
+    model_b: str,
     dataset_path: str,
     eval_dataset: str,
     embedding_provider: str,
@@ -49,6 +51,8 @@ def rorf_classifier(
     model_org: str,
 ):
     from rorf.router.rorf import RoRFTrainer
+
+    llms = [model_a, model_b]
 
     configs = {
         "trainer": "RoRF",
