@@ -6,3 +6,5 @@ python trainer.py rorf-classifier \
     --embedding_provider "openai" \
     --max_depth 20 \
     --n_estimators 100 \
+    --model_id "rorf-llama31405b-llama3170b" \
+    --model_org "notdiamond"

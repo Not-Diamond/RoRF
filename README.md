@@ -78,3 +78,5 @@ We include our training framework for RoRF so that users can train custom router
 - `--embedding_provider`: This is the embedding model to use for the router. We have implemented `"voyage"`, `"openai"`, and `"jina"` as embedding providers. To use `"voyage"` or `"openai"` embedding models, make sure to set the environment variable `VOYAGE_API_KEY` and `OPENAI_API_KEY` accordingly.
 - `--max_depth`: This is the max depth of the random forest estimator. Defaults to 20.
 - `--n_estimators`: This is the number of trees in the random forest. Defaults to 100.
+- `--model_id`: This is the name of the model that will be pushed to Huggingface.
+- `--model_org`: This is the name of the organization that the model will be pushed to on Huggingface.
