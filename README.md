@@ -62,12 +62,12 @@ The notation `rorf-<embed>-<model_a>-<model_b>` indicates the embedding model `<
 ### voyage-large-2-instruct
 To use these routers, set the environment variable `VOYAGE_API_KEY=...`.
 
-- [notdiamond/rorf-jina-llama31405b-llama3170b](https://huggingface.co/notdiamond/rorf-jina-llama31405b-llama3170b)
-- [notdiamond/rorf-jina-llama31405b-claude35sonnet](https://huggingface.co/notdiamond/rorf-jina-llama31405b-claude35sonnet)
-- [notdiamond/rorf-jina-llama31405b-gpt4o](https://huggingface.co/notdiamond/rorf-jina-llama31405b-gpt4o)
-- [notdiamond/rorf-jina-llama31405b-mistrallarge](https://huggingface.co/notdiamond/rorf-jina-llama31405b-mistrallarge)
-- [notdiamond/rorf-jina-gpt4o-gpt4omini](https://huggingface.co/notdiamond/rorf-jina-gpt4o-gpt4omini)
-- [notdiamond/rorf-jina-claude35sonnet-gpt4o](https://huggingface.co/notdiamond/rorf-jina-claude35sonnet-gpt4o)
+- [notdiamond/rorf-voyage-llama31405b-llama3170b](https://huggingface.co/notdiamond/rorf-voyage-llama31405b-llama3170b)
+- [notdiamond/rorf-voyage-llama31405b-claude35sonnet](https://huggingface.co/notdiamond/rorf-voyage-llama31405b-claude35sonnet)
+- [notdiamond/rorf-voyage-llama31405b-gpt4o](https://huggingface.co/notdiamond/rorf-voyage-llama31405b-gpt4o)
+- [notdiamond/rorf-voyage-llama31405b-mistrallarge](https://huggingface.co/notdiamond/rorf-voyage-llama31405b-mistrallarge)
+- [notdiamond/rorf-voyage-gpt4o-gpt4omini](https://huggingface.co/notdiamond/rorf-voyage-gpt4o-gpt4omini)
+- [notdiamond/rorf-voyage-claude35sonnet-gpt4o](https://huggingface.co/notdiamond/rorf-voyage-claude35sonnet-gpt4o)
 
 ## Training RoRF
 We include our training framework for RoRF so that users can train custom routers on their own data and model pairs. `trainer.py` is the entry-point for training, and `run_trainer.sh` provides an example command to train a model router for `llama-3.1-405b-instruct` vs `llama-3.1-70b-instruct` on top of Jina AI's embeddings. The key arguments are
