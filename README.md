@@ -1,5 +1,7 @@
 # RoRF - Routing on Random Forests
 
+[Blog](https://www.notdiamond.ai/blog/rorf)
+
 RoRF is a framework for training and serving random forest-based LLM routers. Our experiments show that:
 - Routing between a pair of strong and weak models can reduce costs while maintaining the strong model's performance.
 - Routing between a pair of two strong models can reduce costs while outperforming both individual models.
@@ -39,14 +41,14 @@ print(f"Recommended model: {recommended_model}")
 ```
 We also provide a `threshold` parameter that determines the percentage of calls made to each model, allowing users to decide their own cost vs performance tradeoffs.
 
-### Threshold calibration
-The `threshold` parameter controls the percentage of calls made to each model but depending on the types of query you might receive, you should calibrate it with your own data. As an example, we can use the dataset [`notdiamond/rorf-llama31405b-llama3170b-battles`](https://huggingface.co/datasets/notdiamond/rorf-llama31405b-llama3170b-battles) to calibrate the threshold for sending 50% of the calls to `llama-3.1-405b-instruct`.
+### Threshold Calibration
+We adopt RouteLLM's `threshold` parameter that controls the percentage of calls made to each model. Depending on the types of query you might receive, you should calibrate it with your own data. As an example, we can use the dataset [`notdiamond/rorf-llama31405b-llama3170b-battles`](https://huggingface.co/datasets/notdiamond/rorf-llama31405b-llama3170b-battles) to calibrate the threshold for sending 50% of the calls to `llama-3.1-405b-instruct`.
 
 ``` shell
 python -m rorf.calibrate_threshold --calibration-dataset "notdiamond/rorf-llama31405b-llama3170b-battles" --router "notdiamond/rorf-jina-llama31405b-llama3170b" --model-a-pct 0.5 --task generate
 ```
 
-## Pre-trained routers
+## Pre-Trained Routers
 We provide 12 pre-trained routers using 2 different embedding models. 6 routers are based on the open-source [jinaai/jina-embeddings-v3](https://huggingface.co/jinaai/jina-embeddings-v3) embedding model, giving developers a completely free experience. Another 6 are based on the closed source [voyageai/voyage-large-2-instruct](https://docs.voyageai.com/docs/embeddings#model-choices) embedding model, allowing developers to use the routers easily with less compute.
 
 The notation `rorf-<embed>-<model_a>-<model_b>` indicates the embedding model `<embed>` used and the two models `<model_a>` and `<model_b>` that it routes between.
@@ -76,7 +78,8 @@ We include our training framework for RoRF so that users can train custom router
 - `--dataset_path`: This is the HF dataset you want to use to train the router. The dataset must have the columns `Input`, containing the input prompt, and `<model>/score`, containing the score achieved by the `<model>`, in this case, either `model_a` or `model_b`. See our [calibration dataset](https://huggingface.co/datasets/notdiamond/rorf-llama31405b-llama3170b-battles) for example.
 - `--eval_dataset`: This is the evaluation dataset for evaluating the router after training. The format should be the same as `--dataset_path`.
 - `--embedding_provider`: This is the embedding model to use for the router. We have implemented `"voyage"`, `"openai"`, and `"jina"` as embedding providers. To use `"voyage"` or `"openai"` embedding models, make sure to set the environment variable `VOYAGE_API_KEY` and `OPENAI_API_KEY` accordingly.
-- `--max_depth`: This is the max depth of the random forest estimator. Defaults to 20.
-- `--n_estimators`: This is the number of trees in the random forest. Defaults to 100.
+- `--max_depth`: This is the max depth of the random forest estimator. Defaults to `20`.
+- `--max_features`: This is the max features for the random forest estimator. Defaults to `1.0`.
+- `--n_estimators`: This is the number of trees in the random forest. Defaults to `100`.
 - `--model_id`: This is the name of the model that will be pushed to Huggingface.
 - `--model_org`: This is the name of the organization that the model will be pushed to on Huggingface.
